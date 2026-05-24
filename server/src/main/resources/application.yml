@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: weini
+  datasource:
+    url: ${DB_URL:jdbc:mysql://192.168.154.130:3306/weini_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:274194431}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: false
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: ${SMTP_USERNAME:274194431@qq.com}
+    password: ${SMTP_PASSWORD:qazigesqrjfzbjbg}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: ${SERVER_PORT:8084}
+
+app:
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:*}
+  jwt:
+    secret: ${JWT_SECRET:weini-dev-jwt-secret-at-least-256-bits-long}
+    access-token-expiration: 900000
+    refresh-token-expiration: 604800000
+  minio:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+    access-key: ${MINIO_ACCESS_KEY:root}
+    secret-key: ${MINIO_SECRET_KEY:274194431}
+    bucket: ${MINIO_BUCKET:weini}
+    public-base-url: /files
+  deepseek:
+    api-key: ${DEEPSEEK_API_KEY:sk-3fa9a73bdcc34ddda87693daa7cb7984}
+    base-url: https://api.deepseek.com
+    model: deepseek-chat
+  notification:
+    girlfriend-email: ${NOTIFY_GIRLFRIEND_EMAIL:3201585090@qq.com}
+    boyfriend-email: ${NOTIFY_BOYFRIEND_EMAIL:274194431@qq.com}
+
+logging:
+  level:
+    com.weini: DEBUG

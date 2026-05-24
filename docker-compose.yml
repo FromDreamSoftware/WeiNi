@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./server
+    container_name: weini-backend
+    restart: unless-stopped
+    environment:
+      DB_URL: jdbc:mysql://weini-mysql:3306/weini_db?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      DB_USERNAME: root
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      MINIO_ENDPOINT: http://weini-minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+      MINIO_BUCKET: weini
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY}
+      NOTIFY_GIRLFRIEND_EMAIL: ${NOTIFY_GIRLFRIEND_EMAIL}
+      NOTIFY_BOYFRIEND_EMAIL: ${NOTIFY_BOYFRIEND_EMAIL}
+    ports:
+      - "8084:8084"
+    networks:
+      - weini
+
+  nginx:
+    build: ./frontend
+    container_name: weini-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - weini
+
+networks:
+  weini:
+    external: true
