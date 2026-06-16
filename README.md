@@ -196,28 +196,5 @@ docker compose up -d
 ```
 
 采用**模块化单体 (Modular Monolith)** 架构——10 个业务模块共享同一代码库和数据库，按功能分包。详情参见 [ARCHITECTURE.md](./ARCHITECTURE.md) 中的 5 个架构决策记录 (ADR)。
-
----
-
-## 📋 路线图
-
-- [x] Phase 1 — 脚手架 (auth · 路由)
-- [x] Phase 2 — 纪念日 + 心情打卡 + 随机投喂
-- [x] Phase 3 — 零食 + 饭菜核心闭环
-- [x] Phase 4 — 趣味工单
-- [x] Phase 5 — 愿望清单 + 情侣相册 + MinIO 上传
-- [x] Phase 6 — 烹饪战绩
-- [x] Phase 7 — Live2D + DeepSeek AI + WebSocket 通知
-- [ ] Phase 8 — 移动端响应式适配 + 私密留言板 + 全面部署上线
-
----
-
-## 📄 许可证
-
-MIT License · 仅限个人/学习用途
-
----
-
 <p align="center">
-  <sub>Made with ❤️ by a boyfriend who codes</sub>
 </p>
